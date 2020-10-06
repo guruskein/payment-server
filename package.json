@@ -1,0 +1,28 @@
+{
+  "name": "hostelmanagement",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.13",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "development": " cross-env  NODE_ENV=development nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WISDOMTOOTHTECHNOLOGIES/HealthGuru.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WISDOMTOOTHTECHNOLOGIES/HealthGuru/issues"
+  },
+  "homepage": "https://github.com/WISDOMTOOTHTECHNOLOGIES/HealthGuru#readme",
+  "description": ""
+}

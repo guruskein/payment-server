@@ -1,0 +1,7 @@
+{
+    "secret": "skeintechnologiesawesome",
+    "refreshTokenSecret": "skeintechnologiesawesome",
+    "port": 3000,
+    "tokenLife": 90000,
+    "refreshTokenLife": 86400
+}
