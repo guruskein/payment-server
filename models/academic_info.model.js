@@ -3,7 +3,7 @@ const fs = require('fs');
 const nodemailer = require("nodemailer");
 
 
-const app_url = "http://2594621fc883.ngrok.io/";
+const app_url = "https://demo.emeetify.com:5000/";
 // if (process.env.NODE_ENV == "development") {
 //     app_url = "http://192.168.1.175:3001/";
 // } else {
@@ -133,7 +133,9 @@ var addclasses = function (request, callback) {
     dbQuery = "insert into classes set school_id =?,class_name = ?,teacher_name = ?,\
             teacher_phonenumber = ?,date = ?";
     console.log(dbQuery)
-    connection.query(dbQuery, [data.school_id, data.class_name, data.teacher_name, data.teacher_phonenumber, data.date], function (err, db_results) {
+    var date = new Date(data.date);
+    console.log(date);
+    connection.query(dbQuery, [data.school_id, data.class_name, data.teacher_name, data.teacher_phonenumber, date], function (err, db_results) {
         if (err) {
             callback(err, null)
         } else {
@@ -183,7 +185,8 @@ var addacademicinfo = function (request, callback) {
     dbQuery = "insert into academic_info set classes =?,student = ?,fees_structure = ?,\
             due_date = ?,remainder_days =?;";
     console.log(dbQuery)
-    connection.query(dbQuery, [data.classes_id, data.student_id, data.fees_structure, data.due_date, data.remainder_days], function (err, db_results) {
+    var due_date = new Date(data.due_date)
+    connection.query(dbQuery, [data.classes_id, data.student_id, data.fees_structure, due_date, data.remainder_days], function (err, db_results) {
         if (err) {
             callback(err, null)
         } else {
