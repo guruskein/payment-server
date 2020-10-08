@@ -208,4 +208,28 @@ var updateUser = function (userDetail, callback) {
         }
     });
 }
-module.exports = { addroles, addusers, getuser, getlogin, getusereoles, updateUser }
+
+var updatePassword = function (userDetail, callback) {
+    existQuery = "select name from user_details where email_id = ?";
+    connection.query(existQuery, [userDetail.email_id], function (err, results) {
+        if (err) {
+            callback(err, null)
+        } else {
+            if (results.length) {
+                console.log('Results: ', results)
+                console.log('Result length: ', results.length)
+                dbQuery = "update user_details set password = ? where email_id=?;";
+                connection.query(dbQuery, [userDetail.password, userDetail.email_id], function (error, updated) {
+                    if (err) {
+                        callback(error, null)
+                    } else {
+                        callback(null, results);
+                    }
+                });
+            } else {
+                callback([], null)
+            }
+        }
+    });
+}
+module.exports = { addroles, addusers, getuser, getlogin, getusereoles, updateUser, updatePassword }

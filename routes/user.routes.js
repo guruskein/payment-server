@@ -21,4 +21,7 @@ module.exports = function (app) {
     app.route('/updateUserDetails')
         .post(userctrl.updateUserDetails);
 
+    app.route('/updateUserPassword')
+        .post(userctrl.updateUserPassword);
+
 };

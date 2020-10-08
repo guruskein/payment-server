@@ -12,7 +12,7 @@ const userfeatureItem = "User"
 /**To add the roles */
 function createroles(req, res) {
 
-  
+
     userService.addroles(req.body, function (err, data) {
         // console.log("data ...",data[0].phone_num,"--->",data[0].emailID);
 
@@ -40,7 +40,7 @@ function createusers(req, res) {
 
         else {
             console.log("exists--->");
-            res.send({ "status_code": "200",data})
+            res.send({ "status_code": "200", data })
         }
     });
 }
@@ -58,7 +58,7 @@ function checklogin(req, res) {
             // if(inputreq.phone_num == data[0].phone_num || inputreq.user_emailID == data[0].user_emailID){
             if (data.length == 1) {
                 console.log("empty----->");
-                res.send({ "status_code": "200", "data": "login succes", data});
+                res.send({ "status_code": "200", "data": "login succes", data });
             }
 
             else {
@@ -110,7 +110,7 @@ function viewuserroles(req, res) {
 }
 
 function updateUserDetails(req, res) {
-    userService.updateUser(req.body, function(err, result) {
+    userService.updateUser(req.body, function (err, result) {
         if (err) {
             res.send({ "status_code": "400", "status": "user data not found " })
         } else {
@@ -119,4 +119,14 @@ function updateUserDetails(req, res) {
     })
 }
 
-module.exports = { createroles, createusers,checklogin, viewalluserdetails , viewuserroles, updateUserDetails};
+function updateUserPassword(req, res) {
+    userService.updatePassword(req.body, function (err, result) {
+        if (err) {
+            res.send({ "status_code": "400", "status": "user data not found " })
+        } else {
+            res.send({ "status_code": "200", result });
+        }
+    })
+}
+
+module.exports = { createroles, createusers, checklogin, viewalluserdetails, viewuserroles, updateUserDetails, updateUserPassword };
